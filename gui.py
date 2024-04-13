@@ -6,7 +6,7 @@ from tkinter import ttk
 from tkinter.simpledialog import Dialog
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(os.getcwd() + "/build/assets/frame0")
+ASSETS_PATH = OUTPUT_PATH / Path(os.getcwd() + "/assets/frame0")
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
