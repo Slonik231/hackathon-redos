@@ -54,7 +54,7 @@ python3 -m venv .venv
 ~~~
 source .venv/bin/activate
 pip install -r requirements.txt
-python3 gui.py
+python3 main.py
 ~~~
 
 <h4>Разработчики:</h4>
