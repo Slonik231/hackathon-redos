@@ -340,7 +340,7 @@ var3 = BooleanVar()
 
 # Create checkboxes
 check1 = tk.Checkbutton(
-    text="Checkbox 1",
+    text="Blockbtn?",
     variable=var1,
     onvalue=True,
     offvalue=False,
@@ -349,7 +349,7 @@ check1 = tk.Checkbutton(
     activebackground="#F0F0F0"
 )
 check2 = tk.Checkbutton(
-    text="Checkbox 2",
+    text="Autohide?",
     variable=var2,
     onvalue=True,
     offvalue=False,
@@ -358,7 +358,7 @@ check2 = tk.Checkbutton(
     activebackground="#F0F0F0"
 )
 check3 = tk.Checkbutton(
-    text="Checkbox 3",
+    text="Quiet?",
     variable=var3,
     onvalue=True,
     offvalue=False,
@@ -368,9 +368,9 @@ check3 = tk.Checkbutton(
 )
 
 # Place checkboxes on the canvas
-check1.place(x=654, y=450)
-check2.place(x=654, y=480)
-check3.place(x=654, y=510)
+check1.place(x=600, y=450)
+check2.place(x=710, y=450)
+check3.place(x=820, y=450)
 
 window.resizable(False, False)
 window.mainloop()
