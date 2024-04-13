@@ -16,7 +16,7 @@ if os.getuid() != 0:
     exit()
 
 window = Tk()
-
+window.title("Киоск-менеджер")
 window.geometry("1000x660")
 window.configure(bg = "#FFFFFF")
 
@@ -72,6 +72,7 @@ def kiosk_on_clicked():
         return
 
     command = f"kiosk-mode-on -u {user} -a {apps} -t {timeout}"
+
     try:
         output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
         messagebox.showinfo("Успех", "Команда выполнена успешно")
