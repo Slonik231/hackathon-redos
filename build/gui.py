@@ -1,6 +1,6 @@
 from pathlib import Path
 import os, subprocess, pwd
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox
 import tkinter as tk
 from tkinter import ttk
 from tkinter.simpledialog import Dialog
@@ -10,6 +10,10 @@ ASSETS_PATH = OUTPUT_PATH / Path(os.getcwd() + "/build/assets/frame0")
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
+
+if os.getuid() != 0:
+    messagebox.showwarning("Недостаточно прав", "Данная программа доступна только для root пользователя!")
+    exit()
 
 window = Tk()
 
