@@ -87,7 +87,7 @@ kiosk_on = tk.Button(
 )
 kiosk_on.place(
     x=630.0,
-    y=392.0,
+    y=440.0,
     width=236.0,
     height=48.0
 )
@@ -303,5 +303,26 @@ background_lines = canvas.create_image(
     495.0,
     image=image_background_lines
 )
+
+entry_image_firejail = PhotoImage(
+    file=relative_to_assets("input_firejail.png"))
+entry_bg_firejail = canvas.create_image(
+    748.0,
+    392.0,
+    image=entry_image_firejail
+)
+input_firejail = Entry(
+    bd=0,
+    bg="#FFFFFF",
+    fg="#000716",
+    highlightthickness=0
+)
+input_firejail.place(
+    x=654.0,
+    y=392.0,
+    width=188.0,
+    height=46.0
+)
+
 window.resizable(False, False)
 window.mainloop()
