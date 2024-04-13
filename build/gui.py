@@ -66,6 +66,7 @@ def kiosk_on_clicked():
     user = input_user.get()
     apps = input_apps.get()
     timeout = inpurt_timeout.get()
+    firejail = input_firejail.get()
 
     if not user or not apps:
         messagebox.showwarning("Предупреждение", "Пожалуйста, проверьте введенные данные")
@@ -73,11 +74,24 @@ def kiosk_on_clicked():
 
     command = f"kiosk-mode-on -u {user} -a {apps} -t {timeout}"
 
+    if firejail:
+        command += f' -f="{firejail}"'
+
+    if var1.get():
+        command += ' -b'
+
+    if var2.get():
+        command += ' -i'
+
+    if var3.get():
+        command += ' -q'
+
     try:
         output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
         messagebox.showinfo("Успех", "Команда выполнена успешно")
     except subprocess.CalledProcessError as e:
         messagebox.showerror("Ошибка", f"Киоск мод уже настроен для данного пользователя\n\n{str(e)}")
+
 
 kiosk_on = tk.Button(
     image=button_banner,
