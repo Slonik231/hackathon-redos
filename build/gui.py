@@ -4,6 +4,7 @@ from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 import tkinter as tk
 from tkinter import ttk
 from tkinter.simpledialog import Dialog
+import subprocess
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(os.getcwd() + "/build/assets/frame0")
@@ -187,12 +188,16 @@ class DialogApps(Dialog):
         super().__init__(parent)
 
     def body(self, master):
-        # Создание списка
+        # Create a Listbox
         self.listbox = tk.Listbox(master, selectmode=tk.MULTIPLE)
 
-        # Заполняем список с доступными приложениями
-        for item in ["app1", "app2", "app3", "app4"]:
+        # Execute the bash script and capture its output
+        output = subprocess.check_output("for app in /usr/share/applications/*.desktop; do echo \"${app:24:-8}\"; done", shell=True).decode().strip().split('\n')
+
+        # Populate the Listbox with the output of the bash script
+        for item in output:
             self.listbox.insert(tk.END, item)
+
         self.listbox.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
         # Создание фрагметы для кнопок ниже
