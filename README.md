@@ -30,6 +30,11 @@
 ~~~
 sudo dnf install redos-kiosk-utils
 ~~~
+3) Так же имеется возможность установить приложение через RPM пакет:
+~~~
+sudo yum install package/hackathon-redos-1.0-1.red80.noarch.rpm
+python3 -m hackathon-redos.main
+~~~
 
 
 УСТАНОВКА
