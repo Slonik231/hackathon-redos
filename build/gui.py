@@ -64,13 +64,19 @@ button_banner = PhotoImage(
 
 def kiosk_on_clicked():
     user = input_user.get()
-    apps = input_apps.get()  # Change entry_2 to input_apps
+    apps = input_apps.get()
     timeout = inpurt_timeout.get()
 
-    if user and apps:
-        print(f"kiosk-mode-on -u {user} -a {apps} -t {timeout}")
-    else:
-        print("Input user and input apps cannot be empty")
+    if not user or not apps:
+        messagebox.showwarning("Предупреждение", "Пожалуйста, проверьте введенные данные")
+        return
+
+    command = f"kiosk-mode-on -u {user} -a {apps} -t {timeout}"
+    try:
+        output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
+        messagebox.showinfo("Успех", "Команда выполнена успешно")
+    except subprocess.CalledProcessError as e:
+        messagebox.showerror("Ошибка", f"Киоск мод уже настроен для данного пользователя\n\n{str(e)}")
 
 kiosk_on = tk.Button(
     image=button_banner,
