@@ -58,11 +58,21 @@ input_user.place(
 button_banner = PhotoImage(
     file=relative_to_assets("kiosk_on.png"))
 
-kiosk_on = Button(
+def kiosk_on_clicked():
+    user = input_user.get()
+    apps = input_apps.get()  # Change entry_2 to input_apps
+    timeout = inpurt_timeout.get()
+
+    if user and apps:
+        print(f"kiosk-mode-on -u {user} -a {apps} -t {timeout}")
+    else:
+        print("Input user and input apps cannot be empty")
+
+kiosk_on = tk.Button(
     image=button_banner,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("kiosk_on clicked"),
+    command=kiosk_on_clicked,
     relief="flat"
 )
 kiosk_on.place(
