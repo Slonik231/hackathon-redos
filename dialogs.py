@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import simpledialog
 
-class DialogApps(Dialog):
+class DialogApps(simpledialog.Dialog):
     def __init__(self, parent, entry_field):
         self.entry_field = entry_field
         super().__init__(parent)
@@ -40,7 +40,7 @@ class DialogApps(Dialog):
     def buttonbox(self):
         return tk.Frame(self)
 
-class DialogUsers(Dialog):
+class DialogUsers(simpledialog.Dialog):
     def __init__(self, parent, entry_field):
         self.entry_field = entry_field
         super().__init__(parent)

@@ -1,13 +1,10 @@
-import os
-import sys
-
-app_path = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(app_path)
-
-import gui
-
-def main():
-    gui.main()
+import tkinter as tk
+from gui import KioskManagerApp
 
 if __name__ == "__main__":
-    main()
+    if os.getuid() != 0:
+        messagebox.showwarning("Недостаточно прав", "Данная программа доступна только для root пользователя!")
+    else:
+        root = tk.Tk()
+        app = KioskManagerApp(root)
+        root.mainloop()
