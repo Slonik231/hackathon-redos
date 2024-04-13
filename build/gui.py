@@ -1,6 +1,9 @@
 from pathlib import Path
 import os
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+import tkinter as tk
+from tkinter import ttk
+from tkinter.simpledialog import Dialog
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(os.getcwd() + "/build/assets/frame0")
@@ -53,15 +56,16 @@ entry_1.place(
 )
 
 button_image_1 = PhotoImage(
-    file=relative_to_assets("button_1.png"))
-button_1 = Button(
+    file=relative_to_assets("kiosk_on.png"))
+
+kiosk_on = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
+    command=lambda: print("kiosk_on clicked"),
     relief="flat"
 )
-button_1.place(
+kiosk_on.place(
     x=630.0,
     y=392.0,
     width=236.0,
@@ -168,37 +172,104 @@ image_1 = canvas.create_image(
     image=image_image_1
 )
 
-button_image_3 = PhotoImage(
-    file=relative_to_assets("button_3.png"))
-button_3 = Button(
+class DialogApps(Dialog):
+    def __init__(self, parent, entry_field):
+        self.entry_field = entry_field
+        super().__init__(parent)
+
+    def body(self, master):
+        # Создание списка
+        self.listbox = tk.Listbox(master, selectmode=tk.MULTIPLE)
+
+        # Заполняем список с доступными приложениями
+        for item in ["app1", "app2", "app3", "app4"]:
+            self.listbox.insert(tk.END, item)
+        self.listbox.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
+        # Создание фрагметы для кнопок ниже
+        button_frame = tk.Frame(master)
+        button_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
+
+        # Кнопка Подтвердить
+        confirm_button = tk.Button(button_frame, text="Подтвердить", command=self.apply)
+        confirm_button.pack(side=tk.RIGHT, padx=10)
+
+        # Кнопка Отмена
+        cancel_button = tk.Button(button_frame, text="Отменить", command=self.cancel)
+        cancel_button.pack(side=tk.RIGHT, padx=10)
+
+    def apply(self):
+        selected_items = [self.listbox.get(i) for i in self.listbox.curselection()]
+        self.entry_field.delete(0, tk.END)
+        self.entry_field.insert(0, ', '.join(selected_items))
+        self.destroy()
+
+    def buttonbox(self):
+        return tk.Frame(self)
+
+button_image_3 = tk.PhotoImage(file=relative_to_assets("button_3.png"))
+button_3 = tk.Button(
     image=button_image_3,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_3 clicked"),
+    command=lambda: DialogApps(window, entry_2),
     relief="flat"
 )
-button_3.place(
-    x=871.0,
-    y=241.0,
-    width=38.0,
-    height=38.0
-)
+button_3.place(x=871.0, y=241.0, width=38.0, height=38.0)
 
-button_image_4 = PhotoImage(
-    file=relative_to_assets("button_4.png"))
-button_4 = Button(
+
+
+
+
+
+
+class DialogUsers(Dialog):
+    def __init__(self, parent, entry_field):
+        self.entry_field = entry_field
+        super().__init__(parent)
+
+    def body(self, master):
+        # Create a Listbox
+        self.listbox = tk.Listbox(master, selectmode=tk.SINGLE)
+        # Add items
+        for item in ["jopa", "huy", "pizda"]:
+            self.listbox.insert(tk.END, item)
+        self.listbox.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
+        # Create a frame for the buttons
+        button_frame = tk.Frame(master)
+        button_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
+
+        # Create a Confirm button
+        confirm_button = tk.Button(button_frame, text="Подтвердить", command=self.apply)
+        confirm_button.pack(side=tk.RIGHT, padx=10)
+
+        # Create a Cancel button
+        cancel_button = tk.Button(button_frame, text="Отменить", command=self.cancel)
+        cancel_button.pack(side=tk.RIGHT, padx=10)
+
+    def apply(self):
+        # Get selected item
+        selected_item = self.listbox.get(self.listbox.curselection())
+        # Insert selected item into the entry field
+        self.entry_field.delete(0, tk.END)
+        self.entry_field.insert(0, selected_item)
+        # Close the dialog
+        self.destroy()
+
+    def buttonbox(self):
+        # Return an empty frame to remove the default buttons
+        return tk.Frame(self)
+
+button_image_4 = tk.PhotoImage(file=relative_to_assets("button_4.png"))
+button_4 = tk.Button(
     image=button_image_4,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_4 clicked"),
+    command=lambda: DialogUsers(window, entry_1),
     relief="flat"
 )
-button_4.place(
-    x=871.0,
-    y=163.0,
-    width=38.0,
-    height=38.0
-)
+button_4.place(x=871.0, y=163.0, width=38.0, height=38.0)
 
 image_image_2 = PhotoImage(
     file=relative_to_assets("image_2.png"))
