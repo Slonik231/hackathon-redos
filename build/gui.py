@@ -35,31 +35,31 @@ canvas.create_rectangle(
     fill="#F0F0F0",
     outline="")
 
-entry_image_1 = PhotoImage(
-    file=relative_to_assets("entry_1.png"))
+entry_banner = PhotoImage(
+    file=relative_to_assets("input_user.png"))
 entry_bg_1 = canvas.create_image(
     748.0,
     182.0,
-    image=entry_image_1
+    image=entry_banner
 )
-entry_1 = Entry(
+input_user = Entry(
     bd=0,
     bg="#FFFFFF",
     fg="#000716",
     highlightthickness=0
 )
-entry_1.place(
+input_user.place(
     x=654.0,
     y=158.0,
     width=188.0,
     height=46.0
 )
 
-button_image_1 = PhotoImage(
+button_banner = PhotoImage(
     file=relative_to_assets("kiosk_on.png"))
 
 kiosk_on = Button(
-    image=button_image_1,
+    image=button_banner,
     borderwidth=0,
     highlightthickness=0,
     command=lambda: print("kiosk_on clicked"),
@@ -90,20 +90,20 @@ canvas.create_text(
     font=("Inter ExtraLight", 16 * -1)
 )
 
-entry_image_2 = PhotoImage(
-    file=relative_to_assets("entry_2.png"))
+entry_background_lines = PhotoImage(
+    file=relative_to_assets("input_apps.png"))
 entry_bg_2 = canvas.create_image(
     748.0,
     260.0,
-    image=entry_image_2
+    image=entry_background_lines
 )
-entry_2 = Entry(
+input_apps = Entry(
     bd=0,
     bg="#FFFFFF",
     fg="#000716",
     highlightthickness=0
 )
-entry_2.place(
+input_apps.place(
     x=654.0,
     y=236.0,
     width=188.0,
@@ -111,19 +111,19 @@ entry_2.place(
 )
 
 entry_image_3 = PhotoImage(
-    file=relative_to_assets("entry_3.png"))
+    file=relative_to_assets("inpurt_timeout.png"))
 entry_bg_3 = canvas.create_image(
     748.0,
     338.0,
     image=entry_image_3
 )
-entry_3 = Entry(
+inpurt_timeout = Entry(
     bd=0,
     bg="#FFFFFF",
     fg="#000716",
     highlightthickness=0
 )
-entry_3.place(
+inpurt_timeout.place(
     x=654.0,
     y=314.0,
     width=188.0,
@@ -139,16 +139,15 @@ canvas.create_text(
     font=("Inter ExtraLight", 16 * -1)
 )
 
-button_image_2 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
-button_2 = Button(
-    image=button_image_2,
+button_background_lines = PhotoImage(
+    file=relative_to_assets("button_support.png"))
+button_support = Button(
+    image=button_background_lines,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
     relief="flat"
 )
-button_2.place(
+button_support.place(
     x=888.0,
     y=637.0,
     width=107.0,
@@ -164,12 +163,12 @@ canvas.create_text(
     font=("Inter Medium", 24 * -1)
 )
 
-image_image_1 = PhotoImage(
-    file=relative_to_assets("image_1.png"))
-image_1 = canvas.create_image(
+image_banner = PhotoImage(
+    file=relative_to_assets("banner.png"))
+banner = canvas.create_image(
     249.0,
     330.0,
-    image=image_image_1
+    image=image_banner
 )
 
 class DialogApps(Dialog):
@@ -207,21 +206,15 @@ class DialogApps(Dialog):
     def buttonbox(self):
         return tk.Frame(self)
 
-button_image_3 = tk.PhotoImage(file=relative_to_assets("button_3.png"))
-button_3 = tk.Button(
+button_image_3 = tk.PhotoImage(file=relative_to_assets("button_dialog_apps.png"))
+button_dialog_apps = tk.Button(
     image=button_image_3,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: DialogApps(window, entry_2),
+    command=lambda: DialogApps(window, input_apps),
     relief="flat"
 )
-button_3.place(x=871.0, y=241.0, width=38.0, height=38.0)
-
-
-
-
-
-
+button_dialog_apps.place(x=871.0, y=241.0, width=38.0, height=38.0)
 
 class DialogUsers(Dialog):
     def __init__(self, parent, entry_field):
@@ -261,22 +254,22 @@ class DialogUsers(Dialog):
         # Return an empty frame to remove the default buttons
         return tk.Frame(self)
 
-button_image_4 = tk.PhotoImage(file=relative_to_assets("button_4.png"))
-button_4 = tk.Button(
+button_image_4 = tk.PhotoImage(file=relative_to_assets("button_dialog_users.png"))
+button_dialog_users = tk.Button(
     image=button_image_4,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: DialogUsers(window, entry_1),
+    command=lambda: DialogUsers(window, input_user),
     relief="flat"
 )
-button_4.place(x=871.0, y=163.0, width=38.0, height=38.0)
+button_dialog_users.place(x=871.0, y=163.0, width=38.0, height=38.0)
 
-image_image_2 = PhotoImage(
-    file=relative_to_assets("image_2.png"))
-image_2 = canvas.create_image(
+image_background_lines = PhotoImage(
+    file=relative_to_assets("background_lines.png"))
+background_lines = canvas.create_image(
     771.0,
     495.0,
-    image=image_image_2
+    image=image_background_lines
 )
 window.resizable(False, False)
 window.mainloop()
