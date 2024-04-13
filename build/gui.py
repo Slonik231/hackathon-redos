@@ -1,6 +1,6 @@
 from pathlib import Path
 import os, subprocess, pwd
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, messagebox, BooleanVar
 import tkinter as tk
 from tkinter import ttk
 from tkinter.simpledialog import Dialog
@@ -333,6 +333,44 @@ input_firejail.place(
     width=188.0,
     height=46.0
 )
+
+var1 = BooleanVar()
+var2 = BooleanVar()
+var3 = BooleanVar()
+
+# Create checkboxes
+check1 = tk.Checkbutton(
+    text="Checkbox 1",
+    variable=var1,
+    onvalue=True,
+    offvalue=False,
+    bg="#F0F0F0",
+    selectcolor="#F0F0F0",
+    activebackground="#F0F0F0"
+)
+check2 = tk.Checkbutton(
+    text="Checkbox 2",
+    variable=var2,
+    onvalue=True,
+    offvalue=False,
+    bg="#F0F0F0",
+    selectcolor="#F0F0F0",
+    activebackground="#F0F0F0"
+)
+check3 = tk.Checkbutton(
+    text="Checkbox 3",
+    variable=var3,
+    onvalue=True,
+    offvalue=False,
+    bg="#F0F0F0",
+    selectcolor="#F0F0F0",
+    activebackground="#F0F0F0"
+)
+
+# Place checkboxes on the canvas
+check1.place(x=654, y=450)
+check2.place(x=654, y=480)
+check3.place(x=654, y=510)
 
 window.resizable(False, False)
 window.mainloop()
