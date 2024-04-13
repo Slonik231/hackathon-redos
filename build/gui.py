@@ -88,7 +88,7 @@ kiosk_on = tk.Button(
 )
 kiosk_on.place(
     x=630.0,
-    y=440.0,
+    y=485.0,
     width=236.0,
     height=48.0
 )
@@ -107,6 +107,15 @@ canvas.create_text(
     215.0,
     anchor="nw",
     text="Приложения",
+    fill="#3F3131",
+    font=("Inter ExtraLight", 16 * -1)
+)
+
+canvas.create_text(
+    649.0,
+    371.0,
+    anchor="nw",
+    text="Firejail (опционально)",
     fill="#3F3131",
     font=("Inter ExtraLight", 16 * -1)
 )
@@ -309,7 +318,7 @@ entry_image_firejail = PhotoImage(
     file=relative_to_assets("input_firejail.png"))
 entry_bg_firejail = canvas.create_image(
     748.0,
-    392.0,
+    416.0,
     image=entry_image_firejail
 )
 input_firejail = Entry(
