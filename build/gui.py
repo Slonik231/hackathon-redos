@@ -1,10 +1,9 @@
 from pathlib import Path
-import os
+import os, subprocess, pwd
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 import tkinter as tk
 from tkinter import ttk
 from tkinter.simpledialog import Dialog
-import subprocess
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(os.getcwd() + "/build/assets/frame0")
@@ -239,9 +238,17 @@ class DialogUsers(Dialog):
     def body(self, master):
         # Create a Listbox
         self.listbox = tk.Listbox(master, selectmode=tk.SINGLE)
-        # Add items
-        for item in ["jopa", "huy", "pizda"]:
-            self.listbox.insert(tk.END, item)
+
+        # Get a list of all users in the system
+        users = pwd.getpwall()
+
+        # Filter out the users with an ID less than or equal to 999
+        filtered_users = [user for user in users if user.pw_uid > 999]
+
+        # Populate the Listbox with the remaining users
+        for user in filtered_users:
+            self.listbox.insert(tk.END, user.pw_name)
+
         self.listbox.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
         # Create a frame for the buttons
