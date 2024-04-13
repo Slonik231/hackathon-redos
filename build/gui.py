@@ -35,12 +35,20 @@ canvas = Canvas(
 )
 
 canvas.place(x = 0, y = 0)
+image_image_1 = PhotoImage(
+    file=relative_to_assets("image_1.png"))
+image_1 = canvas.create_image(
+    250.0,
+    330.0,
+    image=image_image_1
+)
+
 canvas.create_rectangle(
     500.0,
     0.0,
     1000.0,
     660.0,
-    fill="#FBCFCF",
+    fill="#F0F0F0",
     outline="")
 
 button_image_1 = PhotoImage(
@@ -54,34 +62,33 @@ button_1 = Button(
 )
 button_1.place(
     x=632.0,
-    y=480.0,
+    y=402.0,
     width=236.0,
     height=48.0
 )
 
+image_image_2 = PhotoImage(
+    file=relative_to_assets("image_2.png"))
+image_2 = canvas.create_image(
+    773.0,
+    506.0,
+    image=image_image_2
+)
+
 canvas.create_text(
-    641.0,
-    376.0,
+    640.0,
+    296.0,
     anchor="nw",
     text="Таймаут",
     fill="#564343",
     font=("Inter ExtraLight", 18 * -1)
 )
 
-canvas.create_text(
-    701.0,
-    488.0,
-    anchor="nw",
-    text="Включить",
-    fill="#564343",
-    font=("Inter Medium", 18 * -1)
-)
-
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
     750.0,
-    426.0,
+    341.0,
     image=entry_image_1
 )
 entry_1 = Entry(
@@ -92,14 +99,14 @@ entry_1 = Entry(
 )
 entry_1.place(
     x=656.0,
-    y=402.0,
+    y=317.0,
     width=188.0,
     height=46.0
 )
 
 canvas.create_text(
-    641.0,
-    285.0,
+    640.0,
+    211.0,
     anchor="nw",
     text="Приложения",
     fill="#564343",
@@ -110,7 +117,7 @@ entry_image_2 = PhotoImage(
     file=relative_to_assets("entry_2.png"))
 entry_bg_2 = canvas.create_image(
     750.0,
-    330.0,
+    256.0,
     image=entry_image_2
 )
 entry_2 = Entry(
@@ -121,7 +128,7 @@ entry_2 = Entry(
 )
 entry_2.place(
     x=656.0,
-    y=306.0,
+    y=232.0,
     width=188.0,
     height=46.0
 )
@@ -130,7 +137,7 @@ entry_image_3 = PhotoImage(
     file=relative_to_assets("entry_3.png"))
 entry_bg_3 = canvas.create_image(
     750.0,
-    244.0,
+    165.0,
     image=entry_image_3
 )
 entry_3 = Entry(
@@ -141,55 +148,34 @@ entry_3 = Entry(
 )
 entry_3.place(
     x=656.0,
-    y=220.0,
-    width=188.0,
-    height=46.0
-)
-
-entry_image_4 = PhotoImage(
-    file=relative_to_assets("entry_4.png"))
-entry_bg_4 = canvas.create_image(
-    750.0,
-    165.0,
-    image=entry_image_4
-)
-entry_4 = Entry(
-    bd=0,
-    bg="#FFFFFF",
-    fg="#000716",
-    highlightthickness=0
-)
-entry_4.place(
-    x=656.0,
     y=141.0,
     width=188.0,
     height=46.0
 )
 
 canvas.create_text(
-    641.0,
-    116.0,
+    640.0,
+    117.0,
     anchor="nw",
     text="Имя пользователя",
     fill="#564343",
     font=("Inter ExtraLight", 18 * -1)
 )
 
-canvas.create_text(
-    641.0,
-    199.0,
-    anchor="nw",
-    text="Пароль",
-    fill="#564343",
-    font=("Inter ExtraLight", 18 * -1)
+button_image_2 = PhotoImage(
+    file=relative_to_assets("button_2.png"))
+button_2 = Button(
+    image=button_image_2,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_2 clicked"),
+    relief="flat"
 )
-
-image_image_1 = PhotoImage(
-    file=relative_to_assets("image_1.png"))
-image_1 = canvas.create_image(
-    250.0,
-    330.0,
-    image=image_image_1
+button_2.place(
+    x=893.0,
+    y=640.0,
+    width=107.0,
+    height=17.0
 )
 window.resizable(False, False)
 window.mainloop()
